@@ -1,4 +1,5 @@
 import { createContext, useState, useCallback, useEffect } from 'react'
+import { Platform } from 'react-native'
 import {
     LocationObject,
     PermissionStatus,
@@ -25,17 +26,16 @@ export default function LocationContextProvider({ children }: Props) {
             return
         }
 
-        console.log('Getting permission')
-
         await requestPermission()
     }, [status?.status])
 
     const getLocation = useCallback(async () => {
-        if (status?.status !== PermissionStatus.GRANTED) {
+        if (
+            status?.status !== PermissionStatus.GRANTED ||
+            Platform.OS === 'android'
+        ) {
             return
         }
-
-        console.log('Getting Location')
 
         const location = await getCurrentPositionAsync()
         setLocation(location)

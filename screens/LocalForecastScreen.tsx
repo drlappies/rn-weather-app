@@ -8,8 +8,6 @@ import { Palette } from '../theme'
 export default function LocalForecastScreen() {
     const { localWeatherForecast } = useContext(WeatherDataContext)
 
-    console.log(localWeatherForecast)
-
     return (
         <Screen style={styles.screen}>
             <Card

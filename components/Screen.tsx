@@ -11,13 +11,15 @@ export default function Screen({ children, style }: Props) {
 
     return (
         <ScrollView
-            style={{
-                paddingTop: insets.top,
-                paddingBottom: insets.bottom,
-                paddingLeft: insets.left,
-                paddingRight: insets.right,
-                ...style,
-            }}
+            style={[
+                {
+                    paddingTop: insets.top,
+                    // paddingBottom: insets.bottom,
+                    // paddingLeft: insets.left,
+                    // paddingRight: insets.right,
+                },
+                style,
+            ]}
         >
             {children}
         </ScrollView>
